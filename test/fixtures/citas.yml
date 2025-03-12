@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cliente: one
+  fecha: 2025-03-12
+  hora_inicio: 2025-03-12 17:24:21
+  numero_solicitado: 1
+  numero_realizados: 1
+  estado: MyString
+
+two:
+  cliente: two
+  fecha: 2025-03-12
+  hora_inicio: 2025-03-12 17:24:21
+  numero_solicitado: 1
+  numero_realizados: 1
+  estado: MyString

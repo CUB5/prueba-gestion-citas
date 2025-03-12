@@ -1,0 +1,47 @@
+<%= form_with(model: cita) do |form| %>
+  <% if cita.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(cita.errors.count, "error") %> prohibited this cita from being saved:</h2>
+
+      <ul>
+        <% cita.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :cliente_id, style: "display: block" %>
+    <%= form.text_field :cliente_id %>
+  </div>
+
+  <div>
+    <%= form.label :fecha, style: "display: block" %>
+    <%= form.date_field :fecha %>
+  </div>
+
+  <div>
+    <%= form.label :hora_inicio, style: "display: block" %>
+    <%= form.time_field :hora_inicio %>
+  </div>
+
+  <div>
+    <%= form.label :numero_solicitado, style: "display: block" %>
+    <%= form.number_field :numero_solicitado %>
+  </div>
+
+  <div>
+    <%= form.label :numero_realizados, style: "display: block" %>
+    <%= form.number_field :numero_realizados %>
+  </div>
+
+  <div>
+    <%= form.label :estado, style: "display: block" %>
+    <%= form.text_field :estado %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

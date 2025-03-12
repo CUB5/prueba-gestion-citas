@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  codigo: MyString
+  razon_social: MyString
+  cif: MyString
+  direccion: MyString
+  municipio: MyString
+  provincia: MyString
+  fecha_inicio_contrato: 2025-03-12
+  fecha_expiracion_contrato: 2025-03-12
+  numero_reconocimientos: 1
+
+two:
+  codigo: MyString
+  razon_social: MyString
+  cif: MyString
+  direccion: MyString
+  municipio: MyString
+  provincia: MyString
+  fecha_inicio_contrato: 2025-03-12
+  fecha_expiracion_contrato: 2025-03-12
+  numero_reconocimientos: 1
