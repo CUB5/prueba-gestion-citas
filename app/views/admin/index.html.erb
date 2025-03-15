@@ -1,0 +1,28 @@
+<h1>Lista de Usuarios</h1>
+
+<%= link_to "Volver", root_path %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Rol</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td><%= user.role %></td>
+        <td>
+          <%= link_to 'Ver', admin_path(user), class: "btn btn-primary" %>
+          <%= link_to 'Editar', edit_admin_path(user), class: "btn btn-warning" %>
+          <%= link_to 'Eliminar', admin_path(user), method: :delete, data: { confirm: "¿Estás seguro?" }, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

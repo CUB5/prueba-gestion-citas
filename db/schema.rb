@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_12_162421) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_14_124200) do
   create_table "citas", force: :cascade do |t|
     t.integer "cliente_id", null: false
     t.date "fecha"
@@ -35,6 +35,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_12_162421) do
     t.integer "numero_reconocimientos"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_clientes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,4 +53,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_12_162421) do
   end
 
   add_foreign_key "citas", "clientes"
+  add_foreign_key "clientes", "users"
 end

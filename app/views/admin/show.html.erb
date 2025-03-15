@@ -1,0 +1,9 @@
+<%= link_to "Volver", admin_index_path(@user) %>
+
+<h1>Información del Usuario</h1>
+<p>ID: <%= @user.id %></p>
+<p>Email: <%= @user.email %></p>
+<p>Rol: <%= @user.role %></p>
+
+<%= link_to "Editar", edit_admin_path(@user), class: "btn btn-warning" %>
+<%= link_to "Eliminar", admin_path(@user), method: :delete, data: { confirm: "¿Estás seguro?" }, class: "btn btn-danger" %>

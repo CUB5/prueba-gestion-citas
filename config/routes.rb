@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   resources :clientes
   resources :citas
 
-  devise_for :users
+  resources :admin, only: [:index, :create, :update, :show, :edit, :destroy]
+
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
