@@ -3,7 +3,11 @@ class CitasController < ApplicationController
 
   # GET /citas or /citas.json
   def index
-    @citas = Cita.all
+    if current_user.admin? || current_user.medico?
+      @citas = Cita.all
+    else
+      @citas = Cita.joins(:cliente).where(clientes: { user_id: current_user.id }) # Solo citas del usuario actual
+    end
   end
 
   # GET /citas/1 or /citas/1.json
@@ -21,7 +25,12 @@ class CitasController < ApplicationController
 
   # POST /citas or /citas.json
   def create
-    @cita = Cita.new(cita_params)
+    if current_user.admin?
+      @cita = Cita.new(cita_params)  # Admin puede crear citas libremente
+    else
+      cliente = current_user.cliente  # Encuentra el cliente asociado al usuario
+      @cita = cliente.citas.build(cita_params)  # Asigna la cita al cliente del usuario
+    end
 
     respond_to do |format|
       if @cita.save
@@ -61,6 +70,9 @@ class CitasController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_cita
       @cita = Cita.find(params.expect(:id))
+      unless current_user.admin? || current_user.medico? || @cita.cliente.user_id == current_user.id
+        redirect_to citas_path, alert: "No tienes permiso para ver esta cita."
+      end    
     end
 
     # Only allow a list of trusted parameters through.

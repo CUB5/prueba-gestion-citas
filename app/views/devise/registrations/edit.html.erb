@@ -8,11 +8,12 @@
         class: "form-control", placeholder: 'email'  %>
   </div>
 
-  
-  <div>
-    <%= f.select :role, User.roles.keys.map { |r| [r.humanize, r] }, 
-        class: "form-control" %>
-  </div>
+  <% if user_signed_in? && current_user.admin? %>
+    <div>
+      <%= f.select :role, User.roles.keys.map { |r| [r.humanize, r] }, 
+          class: "form-control" %>
+    </div>
+  <% end %>
 
   <br>
   <div>
