@@ -10,8 +10,11 @@ Dependencias:
 
 # Instalar rbenv y Ruby 3.3.0 (en Linux/macOS)
 sudo apt install rbenv  # Ubuntu/Debian
+
 brew install rbenv      # macOS
+
 rbenv install 3.3.0
+
 rbenv global 3.3.0
 
 # Instalar Bundler y Rails
