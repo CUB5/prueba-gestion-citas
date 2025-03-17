@@ -19,6 +19,7 @@ rbenv global 3.3.0
 
 # Instalar Bundler y Rails
 gem install bundler
+
 gem install rails -v 8
 
 bundle install
