@@ -9,22 +9,22 @@ Dependencias:
 * Database: sqlite3
 
 # Instalar rbenv y Ruby 3.3.0 (en Linux/macOS)
-sudo apt install rbenv  # Ubuntu/Debian
+- sudo apt install rbenv  # Ubuntu/Debian
 
-brew install rbenv      # macOS
+- brew install rbenv      # macOS
 
-rbenv install 3.3.0
+- rbenv install 3.3.0
 
-rbenv global 3.3.0
+- rbenv global 3.3.0
 
 # Instalar Bundler y Rails
-gem install bundler
+- gem install bundler
 
-gem install rails -v 8
+- gem install rails -v 8
 
-bundle install
+- bundle install
 
-rails db:migrate
+- rails db:migrate
 
 rails db:seed
 * Se cargaran los datos de: 
