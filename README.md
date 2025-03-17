@@ -21,8 +21,6 @@ Dependencias:
 # Instalar Bundler y Rails
 - gem install bundler
 
-- gem install rails -v 8
-
 - bundle install
 
 - rails db:migrate
