@@ -1,7 +1,8 @@
 # README
 
 Proyecto Rails: Gestión de Citas Médicas
-Este proyecto es una aplicación web desarrollada en Ruby on Rails 7 para gestionar usuarios, clientes y citas médicas, con roles de admin, médico y usuario.
+
+Este proyecto es una aplicación web desarrollada en Ruby on Rails 8 para gestionar usuarios, clientes y citas médicas, con roles de admin, médico y usuario.
 
 Dependencias:
 * Ruby version: 3.3.0
