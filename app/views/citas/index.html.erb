@@ -5,14 +5,41 @@
 <h1>Citas</h1>
 
 <%= link_to "Inicio", root_path %>
+<%= link_to "Nueva cita", new_cita_path %>
+<%= link_to "Exportar a Excel", export_xlsx_citas_path(format: :xlsx) %>
 
-<div id="citas">
-  <% @citas.each do |cita| %>
-    <%= render cita %>
-    <p>
-      <%= link_to "Show this cita", cita %>
-    </p>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Cliente ID</th>
+      <th>Cliente Código</th>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th>N° Solicitado</th>
+      <th>N° Realizados</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
 
-<%= link_to "New cita", new_cita_path %>
+  <tbody>
+    <% @citas.each do |cita| %>
+      <tr id="<%= dom_id cita %>">
+        <td><%= cita.cliente_id %></td>
+        <td><%= cita.cliente.codigo %></td>
+        <td><%= cita.fecha %></td>
+        <td><%= cita.hora_inicio.strftime("%H:%M") %></td>
+        <td><%= cita.numero_solicitado %></td>
+        <td><%= cita.numero_realizados %></td>
+        <td><%= cita.estado %></td>
+        <td>
+          <%= link_to "Ver", cita_path(cita) %>
+          <%= link_to "Editar", edit_cita_path(cita) %>
+          <%= link_to "Eliminar", cita_path(cita), method: :delete, data: { confirm: "¿Seguro que quieres eliminar esta cita?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @citas %>

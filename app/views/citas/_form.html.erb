@@ -12,8 +12,14 @@
   <% end %>
 
   <div>
-    <%= form.label :cliente_id, style: "display: block" %>
-    <%= form.text_field :cliente_id %>
+    <% if current_user.admin? %>
+      <%= form.label :cliente_id, style: "display: block" %>
+      <%= form.text_field :cliente_id %>
+    <% else %>
+      <p>
+        <strong>Cliente:</strong> <span><%= cita.cliente_id %></span>
+      </p>
+    <% end %>
   </div>
 
   <div>

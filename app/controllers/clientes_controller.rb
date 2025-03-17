@@ -3,7 +3,7 @@ class ClientesController < ApplicationController
 
   # GET /clientes or /clientes.json
   def index
-    @clientes = Cliente.all
+    @clientes = Cliente.order(created_at: :desc).page(params[:page]).per(150)
   end
 
   # GET /clientes/1 or /clientes/1.json
@@ -54,6 +54,16 @@ class ClientesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to clientes_path, status: :see_other, notice: "Cliente was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def export_xlsx
+    @clientes = Cliente.all
+    
+    respond_to do |format|
+      format.xlsx{
+        response.headers['Content-Disposition'] = "attachment; filename=clientes.xlsx"
+      }
     end
   end
 

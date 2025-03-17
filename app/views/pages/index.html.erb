@@ -1,18 +1,18 @@
 <h1>INDEX</h1>
 
 <div>
-    <h2>Sesion:</h2>
     <% if user_signed_in? %>
         <p>Hello <%= current_user.email %></p>
         <p>Hello <%= current_user.role %></p>
         <%= link_to "Cerrar sesión", destroy_user_session_path, 'data-turbo-method': :delete %>
         <%= link_to "Editar perfil", edit_user_registration_path %>
-        <div>
-            <h2>Mis Citas</h2>
-
-            <%= link_to "Ver mis citas", citas_path %>
-            <%= link_to "Crear nueva cita", new_cita_path %>
-        </div>
+        <% if current_user.cliente? %>
+            <div>
+                <h2>Mis Citas</h2>
+                <%= link_to "Ver mis citas", citas_path %>
+                <%= link_to "Crear nueva cita", new_cita_path %>
+            </div>
+        <% end %>
     <% else %>
         <a href="/users/sign_in">Iniciar Sesion</a>
         <a href="/users/sign_up">Registrarse</a>
@@ -23,14 +23,12 @@
 <% if user_signed_in? %>
 <div>    
     <div>
-        <h2>Admin Panel</h2>
-        <% if current_user.admin? %>
-            <%= link_to "Listado de clientes", clientes_path %>
-        <% end %>
         <% if current_user.medico? || current_user.admin? %>
+            <h2>Admin Panel</h2>
             <%= link_to "Listado de citas", citas_path %>
         <% end %>
         <% if current_user.admin? %>
+            <%= link_to "Listado de clientes", clientes_path %>
             <%= link_to "Admin Panel (Usuarios)", admin_index_path %>
         <% end %>
     </div>    

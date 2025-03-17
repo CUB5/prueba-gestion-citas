@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
   root "pages#index"
-  resources :clientes
-  resources :citas
+  resources :clientes do
+    collection do
+      get :export_xlsx
+    end
+  end
+  resources :citas do
+    collection do
+      get :export_xlsx
+    end
+  end
 
   resources :admin, only: [:index, :create, :update, :show, :edit, :destroy]
 

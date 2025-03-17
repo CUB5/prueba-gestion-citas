@@ -4,13 +4,43 @@
 
 <h1>Clientes</h1>
 
-<div id="clientes">
-  <% @clientes.each do |cliente| %>
-    <%= render cliente %>
-    <p>
-      <%= link_to "Show this cliente", cliente %>
-    </p>
-  <% end %>
-</div>
+<%= link_to "Inicio", root_path %>
+<%= link_to "Exportar a Excel", export_xlsx_clientes_path(format: :xlsx) %>
 
-<%= link_to "New cliente", new_cliente_path %>
+<table>
+  <thead>
+    <tr>
+      <td>Codigo Cliente</td>
+      <td>Razon Social</td>
+      <td>CIF</td>
+      <td>Direccion</td>
+      <td>Municipio</td>
+      <td>Provincia</td>
+      <td>Fecha Inicio Contrato</td>
+      <td>Fecha Expiracion Contrato</td>
+      <td>Numero Reconocimientos</td>
+      <td>Acciones</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @clientes.each do |cliente| %>
+    <tr id="<%= dom_id cliente %>">
+      <td><%= cliente.codigo %></td>
+      <td><%= cliente.razon_social %></td>
+      <td><%= cliente.cif %></td>
+      <td><%= cliente.direccion %></td>
+      <td><%= cliente.municipio %></td>
+      <td><%= cliente.provincia %></td>
+      <td><%= cliente.fecha_inicio_contrato %></td>
+      <td><%= cliente.fecha_expiracion_contrato %></td>
+      <td><%= cliente.numero_reconocimientos %></td>
+      <td>
+        <%= link_to "Ver", cliente_path(cliente) %>
+        <%= link_to "Editar", edit_cliente_path(cliente) %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @clientes %>

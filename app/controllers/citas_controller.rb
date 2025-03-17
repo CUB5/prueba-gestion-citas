@@ -4,9 +4,9 @@ class CitasController < ApplicationController
   # GET /citas or /citas.json
   def index
     if current_user.admin? || current_user.medico?
-      @citas = Cita.all
+      @citas = Cita.includes(:cliente).order(fecha: :desc).page(params[:page]).per(150)
     else
-      @citas = Cita.joins(:cliente).where(clientes: { user_id: current_user.id }) # Solo citas del usuario actual
+      @citas = current_user.cliente.citas.order(fecha: :desc).page(params[:page]).per(150) # Solo citas del usuario actual
     end
   end
 
@@ -63,6 +63,20 @@ class CitasController < ApplicationController
     respond_to do |format|
       format.html { redirect_to citas_path, status: :see_other, notice: "Cita was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def export_xlsx
+    if current_user.admin? || current_user.medico?
+      @citas = Cita.all
+    else
+      @citas = current_user.cliente.citas
+    end
+    
+    respond_to do |format|
+      format.xlsx{
+        response.headers['Content-Disposition'] = "attachment; filename=citas.xlsx"
+      }
     end
   end
 

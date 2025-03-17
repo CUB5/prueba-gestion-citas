@@ -3,7 +3,7 @@ class AdminController < ApplicationController
     before_action :authorize_admin
 
     def index
-      @users = User.all
+      @users = User.order(created_at: :desc).page(params[:page]).per(150)
     end
 
     def show

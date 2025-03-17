@@ -1,0 +1,21 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Clientes") do |sheet|
+  # Encabezados
+  sheet.add_row ["Código", "Razón Social", "CIF", "Dirección", "Municipio", "Provincia", "Fecha Inicio", "Fecha Expiración", "Reconocimientos"]
+
+  # Datos de clientes
+  @clientes.each do |cliente|
+    sheet.add_row [
+      cliente.codigo,
+      cliente.razon_social,
+      cliente.cif,
+      cliente.direccion,
+      cliente.municipio,
+      cliente.provincia,
+      cliente.fecha_inicio_contrato&.strftime("%d/%m/%Y") || "Sin fecha",
+      cliente.fecha_expiracion_contrato&.strftime("%d/%m/%Y") || "Sin fecha",
+      cliente.numero_reconocimientos
+    ]
+  end
+end

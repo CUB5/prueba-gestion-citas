@@ -1,24 +1,31 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Proyecto Rails: Gestión de Citas Médicas
+Este proyecto es una aplicación web desarrollada en Ruby on Rails 7 para gestionar usuarios, clientes y citas médicas, con roles de admin, médico y usuario.
 
-Things you may want to cover:
-
+Dependencias:
 * Ruby version: 3.3.0
-
 * System dependencies: rbenv
+* Database: sqlite3
 
-* Configuration:
+# Instalar rbenv y Ruby 3.3.0 (en Linux/macOS)
+sudo apt install rbenv  # Ubuntu/Debian
+brew install rbenv      # macOS
+rbenv install 3.3.0
+rbenv global 3.3.0
 
-* Database creation: sqlite3, no se necesita de configuracion extra
+# Instalar Bundler y Rails
+gem install bundler
+gem install rails -v 8
 
-* Database initialization: rails db:migrate
+bundle install
 
-* How to run the test suite
+rails db:migrate
 
-* Services (job queues, cache servers, search engines, etc.)
+rails db:seed
+* Se cargaran los datos de: 
+    - usuarios aleatorios, email aleatorios con contraseña "contraseña"
+    - admin, con email admin@admin.com y contraseña "admin1"
+    - medico, con email medico@medico.com y contraseña "medico"
 
-* Deployment instructions
-
-* ...
+rails server o bin/dev

@@ -1,0 +1,19 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Citas") do |sheet|
+  # Encabezados
+  sheet.add_row ["Cliente ID", "Cliente Código", "Fecha", "Hora", "Nº Solicitado", "Nº Realizado", "Estado"]
+
+  # Datos de citas
+  @citas.each do |cita|
+    sheet.add_row [
+      cita.cliente_id,
+      cita.cliente.codigo,
+      cita.fecha&.strftime("%d/%m/%Y") || "Sin fecha",
+      cita.hora_inicio&.strftime("%H:%M") || "Sin hora",
+      cita.numero_solicitado,
+      cita.numero_realizados,
+      cita.estado
+    ]
+  end
+end
