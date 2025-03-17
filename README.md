@@ -26,10 +26,10 @@ Dependencias:
 
 - rails db:migrate
 
-rails db:seed
-* Se cargaran los datos de: 
+- rails db:seed
+ Se cargaran los datos de: 
     - usuarios aleatorios, email aleatorios con contraseña "contraseña"
     - admin, con email admin@admin.com y contraseña "admin1"
     - medico, con email medico@medico.com y contraseña "medico"
 
-rails server o bin/dev
+- rails server o bin/dev
