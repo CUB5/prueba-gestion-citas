@@ -25,7 +25,7 @@ Dependencias:
 
 - rails db:migrate
 
-- rails db:seed
+- rails db:seed (puede tardar varios minutos)
  Se cargaran los datos de: 
     - usuarios aleatorios, email aleatorios con contraseña "contraseña"
     - admin, con email admin@admin.com y contraseña "admin1"
